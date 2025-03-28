@@ -4,9 +4,7 @@
             スポットの新規作成
         </h2>
         <x-validation-errors class="mb-4" :errors="$errors"/>
-        @if (@session('message'))
-            {{ session('message') }}
-        @endif
+        <x-message :message="session('message')"/>
     </x-slot>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

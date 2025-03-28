@@ -68,7 +68,7 @@ class SpotController extends Controller
      */
     public function show(Spot $spot)
     {
-        //
+        return view('spot.show', compact('spot'));
     }
 
     /**

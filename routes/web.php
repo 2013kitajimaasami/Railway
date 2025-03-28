@@ -23,5 +23,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/spot/create', [SpotController::class, 'create'])->name('spot.create');
 Route::post('/spot/store', [SpotController::class, 'store'])->name('spot.store');
 Route::get('/spot/index', [SpotController::class, 'index'])->name('spot.index');
+Route::get('/spot/{spot}', [SpotController::class, 'show'])->name('spot.show');
 
 require __DIR__.'/auth.php';
