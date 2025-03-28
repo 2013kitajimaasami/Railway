@@ -13,7 +13,10 @@ class SpotController extends Controller
      */
     public function index()
     {
-        //
+        $spots = Spot::orderBy('created_at', 'desc')->get();
+        $user = auth()->user();
+
+        return view('spot/index', compact('spots', 'user'));
     }
 
     /**

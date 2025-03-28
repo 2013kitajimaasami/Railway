@@ -12,7 +12,6 @@
                 <li>{{ $error }}</li>
             @endforeach
 
-            {{-- ここから追加 --}}
             @if(empty($errors->first('image')))
                 <li>画像ファイルがあれば、再度、選択してください。</li>
             @endif
