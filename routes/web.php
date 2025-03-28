@@ -24,5 +24,8 @@ Route::get('/spot/create', [SpotController::class, 'create'])->name('spot.create
 Route::post('/spot/store', [SpotController::class, 'store'])->name('spot.store');
 Route::get('/spot/index', [SpotController::class, 'index'])->name('spot.index');
 Route::get('/spot/{spot}', [SpotController::class, 'show'])->name('spot.show');
+Route::get('/spot/{spot}/edit', [SpotController::class, 'edit'])->name('spot.edit');
+Route::patch('/spot/{spot}', [SpotController::class, 'update'])->name('spot.update');
+Route::delete('/spot/{spot}', [SpotController::class, 'destroy'])->name('spot.destroy');
 
 require __DIR__.'/auth.php';

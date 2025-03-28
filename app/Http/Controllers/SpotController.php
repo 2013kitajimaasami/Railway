@@ -76,7 +76,7 @@ class SpotController extends Controller
      */
     public function edit(Spot $spot)
     {
-        //
+        return view('spot.edit', compact('spot'));
     }
 
     /**
@@ -84,7 +84,33 @@ class SpotController extends Controller
      */
     public function update(Request $request, Spot $spot)
     {
-        //
+        $inputs = request()->validate([
+            'title' => 'required|max:255',
+            'body' => 'required|max:1000',
+            'address' => 'required|max:255',
+            'line' => 'max:1000',
+            'toilet' => 'max:255',
+            'parking' => 'max:255',
+            'image' => 'image|max:1024',
+        ]);
+
+        $spot->title = $inputs['title'];
+        $spot->body = $inputs['body'];
+        $spot->address = $inputs['address'];
+        $spot->line = $inputs['line'];
+        $spot->toilet = $inputs['toilet'];
+        $spot->parking = $inputs['parking'];
+
+        if(request('image')) {
+            $original = request()->file('image')->getClientOriginalName();
+            $name = date('Ymd_His') . '_' . $original;
+            request()->file('image')->move('storage/images', $name);
+            $spot->image = $name;
+        }
+
+        $spot->save();
+
+        return redirect()->route('spot.show', $spot)->with('message', 'スポット情報を更新しました！');
     }
 
     /**
@@ -92,6 +118,8 @@ class SpotController extends Controller
      */
     public function destroy(Spot $spot)
     {
-        //
+        $spot->delete();
+
+        return redirect()->route('spot.index')->with('message', 'スポット情報を削除しました');
     }
 }
