@@ -49,6 +49,14 @@
                             <p> {{ $spot->user->name }} • {{$spot->created_at->format('Y年m月d日')}}</p>
                         </div>
                     </div>
+                    <div class="mt-4 mb-12">
+                        <form method="post" action="{{route('comment.store')}}">
+                            @csrf
+                            <input type="hidden" name='spot_id' value="{{$spot->id}}">
+                            <textarea name="body" class="bg-white w-full  rounded-2xl px-4 mt-4 py-4 shadow-lg hover:shadow-2xl transition duration-500" id="body" cols="30" rows="3" placeholder="コメントを入力してください">{{ old('body') }}</textarea>
+                            <x-primary-button class="float-right mr-4 mb-12">コメントする</x-primary-button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

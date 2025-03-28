@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpotController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,5 +28,7 @@ Route::get('/spot/{spot}', [SpotController::class, 'show'])->name('spot.show');
 Route::get('/spot/{spot}/edit', [SpotController::class, 'edit'])->name('spot.edit');
 Route::patch('/spot/{spot}', [SpotController::class, 'update'])->name('spot.update');
 Route::delete('/spot/{spot}', [SpotController::class, 'destroy'])->name('spot.destroy');
+
+Route::post('/spot/comment/store', [CommentController::class, 'store'])->name('comment.store');
 
 require __DIR__.'/auth.php';

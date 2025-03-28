@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function spots() {
         return $this->hasMany(Spot::class);
     }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
 }
