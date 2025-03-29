@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('spot.index') }}">
+                    <a href="{{ route('top') }}">
                         {{-- ロゴを準備した画像に変更 --}}
                         <img src="{{ asset('logo/shingou.png')}}" style="max-height: 60px">
                     </a>
