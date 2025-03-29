@@ -19,6 +19,12 @@
                     <x-nav-link :href="route('spot.create')" :active="request()->routeIs('spot.create')">
                         スポット新規作成
                     </x-nav-link>
+                    <x-nav-link :href="route('spot.myspot')" :active="request()->routeIs('spot.myspot')">
+                        自分の投稿一覧
+                    </x-nav-link>
+                    <x-nav-link :href="route('spot.mycomment')" :active="request()->routeIs('spot.mycomment')">
+                        自分のコメント一覧
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -76,6 +82,12 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('spot.create')" :active="request()->routeIs('spot.create')">
                 スポットの新規作成
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('spot.myspot')" :active="request()->routeIs('spot.myspot')">
+                自分の投稿一覧
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('spot.mycomment')" :active="request()->routeIs('spot.mycomment')">
+                自分のコメント一覧
             </x-responsive-nav-link>
         </div>
 

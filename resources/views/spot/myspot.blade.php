@@ -1,15 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            鉄道スポット一覧
+            投稿した鉄道スポット一覧
         </h2>
         <x-validation-errors class="mb-4" :errors="$errors" />
         <x-message :message="session('message')" />
     </x-slot>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="mt-4">{{ $user->name }}さん、こんにちは！</p>
-        {{-- スポットの一覧表示 --}}
+        @if (count($spots) == 0)
+        <p class="mt-4">
+            まだスポットを投稿していません。
+        </p>
+        @else
+        {{-- 投稿したスポットの一覧表示 --}}
         @foreach ($spots as $spot)
         <div class="mx-4 sm:p-8">
             <div class="mt-4">
@@ -43,5 +47,6 @@
             </div>
         </div>
         @endforeach
+        @endif
     </div>
 </x-app-layout>

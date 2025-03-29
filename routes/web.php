@@ -21,6 +21,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/spot/myspot', [SpotController::class, 'myspot'])->name('spot.myspot');
+Route::get('/spot/mycomment', [SpotController::class, 'mycomment'])->name('spot.mycomment');
+
 Route::get('/spot/create', [SpotController::class, 'create'])->name('spot.create');
 Route::post('/spot/store', [SpotController::class, 'store'])->name('spot.store');
 Route::get('/spot/index', [SpotController::class, 'index'])->name('spot.index');
@@ -30,5 +33,7 @@ Route::patch('/spot/{spot}', [SpotController::class, 'update'])->name('spot.upda
 Route::delete('/spot/{spot}', [SpotController::class, 'destroy'])->name('spot.destroy');
 
 Route::post('/spot/comment/store', [CommentController::class, 'store'])->name('comment.store');
+
+
 
 require __DIR__.'/auth.php';

@@ -21,7 +21,7 @@
                         <a href="{{route('spot.edit', $spot)}}">
                             <x-primary-button class="bg-teal-700 float-right">編集</x-primary-button>
                         </a>
-                        <form method="post" action="{{route('spot.destroy', $spot)}}">
+                        <form method="post" action="{{ route('spot.destroy', $spot) }}">
                             @csrf
                             @method('delete')
                             <x-primary-button class="bg-red-700 float-right ml-4"
@@ -30,34 +30,44 @@
                     </div>
 
                     <div>
-                        <p class="text-gray-600 py-4 whitespace-pre-line">住所：{{$spot->address}}</p>
+                        <p class="text-gray-600 py-4 whitespace-pre-line">住所：{{ $spot->address }}</p>
                         @if ($spot->line)
-                        <p class="text-gray-600 py-4 whitespace-pre-line">路線名：{{$spot->line}}</p>
+                        <p class="text-gray-600 py-4 whitespace-pre-line">路線名：{{ $spot->line }}</p>
                         @endif
                         @if ($spot->toilet)
-                        <p class="text-gray-600 py-4 whitespace-pre-line">トイレ情報：{{$spot->toilet}}</p>
+                        <p class="text-gray-600 py-4 whitespace-pre-line">トイレ情報：{{ $spot->toilet }}</p>
                         @endif
                         @if ($spot->parking)
-                        <p class="text-gray-600 py-4 whitespace-pre-line">駐車場情報：{{$spot->parking}}</p>
+                        <p class="text-gray-600 py-4 whitespace-pre-line">駐車場情報：{{ $spot->parking }}</p>
                         @endif
                         <p class="mt-2 text-gray-600 py-4">おすすめポイント</p>
-                        <p class="text-gray-600 py-4 whitespace-pre-line">{{$spot->body}}</p>
+                        <p class="text-gray-600 py-4 whitespace-pre-line">{{ $spot->body }}</p>
                         @if($spot->image)
-                        <img src="{{ asset('storage/images/'.$spot->image)}}" class="mx-auto" style="height:300px;">
+                        <img src="{{ asset('storage/images/'.$spot->image) }}" class="mx-auto" style="height:300px;">
                         @endif
                         <div class="text-sm font-semibold flex flex-row-reverse">
-                            <p> {{ $spot->user->name }} • {{$spot->created_at->format('Y年m月d日')}}</p>
+                            <p> {{ $spot->user->name }} • {{ $spot->created_at->format('Y年m月d日') }}</p>
                         </div>
                     </div>
-                    <div class="mt-4 mb-12">
-                        <form method="post" action="{{route('comment.store')}}">
-                            @csrf
-                            <input type="hidden" name='spot_id' value="{{$spot->id}}">
-                            <textarea name="body" class="bg-white w-full  rounded-2xl px-4 mt-4 py-4 shadow-lg hover:shadow-2xl transition duration-500" id="body" cols="30" rows="3" placeholder="コメントを入力してください">{{ old('body') }}</textarea>
-                            <x-primary-button class="float-right mr-4 mb-12">コメントする</x-primary-button>
-                        </form>
+                </div>
+                <div class="mt-4 mb-12">
+                    <form method="post" action="{{route('comment.store')}}">
+                        @csrf
+                        <input type="hidden" name='spot_id' value="{{ $spot->id }}">
+                        <textarea name="body"
+                            class="bg-white w-full  rounded-2xl px-4 mt-4 py-4 shadow-lg hover:shadow-2xl transition duration-500"
+                            id="body" cols="30" rows="3" placeholder="コメントを入力してください">{{ old('body') }}</textarea>
+                        <x-primary-button class="float-right mr-4 mb-12">コメントする</x-primary-button>
+                    </form>
+                </div>
+                @foreach ($spot->comments as $comment)
+                <div class="bg-white w-full  rounded-2xl px-10 py-2 shadow-lg mt-8 whitespace-pre-line">
+                    {{ $comment->body }}
+                    <div class="text-sm font-semibold flex flex-row-reverse">
+                        <p>{{ $comment->user->name }}・{{ $comment->created_at->format('Y年m月d日') }}</p>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -1,16 +1,24 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            鉄道スポット一覧
+            コメントした鉄道スポット一覧
         </h2>
         <x-validation-errors class="mb-4" :errors="$errors" />
         <x-message :message="session('message')" />
     </x-slot>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="mt-4">{{ $user->name }}さん、こんにちは！</p>
-        {{-- スポットの一覧表示 --}}
-        @foreach ($spots as $spot)
+        @if (count($comments) == 0)
+        <p class="mt-4">
+            まだどの投稿にもコメントしていません。
+        </p>
+        @else
+        {{-- コメントしたスポットの一覧表示 --}}
+        @foreach ($comments->unique('spot_id') as $comment)
+        @php
+            // php構文で $spot の変数を「コメントしたスポット」に定義しなおして、myspot.blade.php をそのまま活用
+            $spot = $comment->spot;
+        @endphp
         <div class="mx-4 sm:p-8">
             <div class="mt-4">
                 <div class="bg-white w-full  rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
@@ -43,5 +51,6 @@
             </div>
         </div>
         @endforeach
+        @endif
     </div>
 </x-app-layout>

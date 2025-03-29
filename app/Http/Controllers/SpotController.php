@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Spot;
+use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -117,9 +118,25 @@ class SpotController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Spot $spot)
-    {
+    {   
+        $spot->comments()->delete();
         $spot->delete();
 
         return redirect()->route('spot.index')->with('message', 'スポット情報を削除しました');
+    }
+
+    // 自分の投稿とコメント一覧表示用
+    public function myspot() {
+        $user = auth()->user()->id;
+        $spots = Spot::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+
+        return view('spot.myspot', compact('spots'));
+    }
+
+    public function mycomment() {
+        $user = auth()->user()->id;
+        $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+
+        return view('spot.mycomment', compact('comments'));
     }
 }
