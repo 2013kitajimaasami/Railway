@@ -25,6 +25,12 @@
                     <x-nav-link :href="route('spot.mycomment')" :active="request()->routeIs('spot.mycomment')">
                         自分のコメント一覧
                     </x-nav-link>
+                    {{-- ユーザー一覧は管理者のみ表示する --}}
+                    @can('admin')
+                    <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
+                        ユーザー一覧
+                    </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -89,6 +95,11 @@
             <x-responsive-nav-link :href="route('spot.mycomment')" :active="request()->routeIs('spot.mycomment')">
                 自分のコメント一覧
             </x-responsive-nav-link>
+            @can('admin')
+            <x-responsive-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
+                ユーザー一覧
+            </x-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->

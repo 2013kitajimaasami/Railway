@@ -21,6 +21,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'can:admin'])->group(function() {
+    Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+});
+
 Route::get('/spot/myspot', [SpotController::class, 'myspot'])->name('spot.myspot');
 Route::get('/spot/mycomment', [SpotController::class, 'mycomment'])->name('spot.mycomment');
 
