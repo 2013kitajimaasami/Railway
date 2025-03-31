@@ -37,7 +37,7 @@
                         <hr class="w-full">
                         <p class="mt-4 text-gray-600 py-4">{{ Str::limit($spot->body, 100, '...') }}</p>
                         <div class="text-sm font-semibold flex flex-row-reverse">
-                            <p>{{ $spot->user->name }}・{{ $spot->created_at->format('Y年m月d日') }}</p>
+                            <p>{{ $spot->user->name ?? '削除されたユーザー' }}・{{ $spot->created_at->format('Y年m月d日') }}</p>
                         </div>
 
                         {{-- コメントバッジ --}}

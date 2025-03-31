@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpotController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,8 +22,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// 管理者画面用
 Route::middleware(['auth', 'can:admin'])->group(function() {
     Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/adminedit/{user}', [ProfileController::class, 'adminedit'])->name('profile.adminedit');
+    Route::patch('/profile/adminupdate/{user}', [ProfileController::class, 'adminupdate'])->name('profile.adminupdate');
+    Route::delete('/profile/{user}', [ProfileController::class, 'admindestroy'])->name('profile.admindestroy');
+    Route::patch('/roles/{user}/attach', [RoleController::class, 'attach'])->name('role.attach');
+    Route::patch('/role/{user}/detach', [RoleController::class, 'detach'])->name('role.detach');
 });
 
 Route::get('/spot/myspot', [SpotController::class, 'myspot'])->name('spot.myspot');
