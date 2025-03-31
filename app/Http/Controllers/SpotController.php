@@ -6,6 +6,7 @@ use App\Models\Spot;
 use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SpotController extends Controller
 {
@@ -75,8 +76,13 @@ class SpotController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Spot $spot)
+    public function edit(Request $request, Spot $spot)
     {
+        // リクエストに関連付けられた認証済みユーザーが、特定の投稿 $spot を編集する権限があるかをチェック
+        if ($request->user()->cannot('update', $spot)) {
+            abort(403);
+        }
+
         return view('spot.edit', compact('spot'));
     }
 
@@ -85,6 +91,11 @@ class SpotController extends Controller
      */
     public function update(Request $request, Spot $spot)
     {
+        // リクエストに関連付けられた認証済みユーザーが、特定の投稿 $spot を編集する権限があるかをチェック
+        if ($request->user()->cannot('update', $spot)) {
+            abort(403);
+        }
+
         $inputs = request()->validate([
             'title' => 'required|max:255',
             'body' => 'required|max:1000',
@@ -117,8 +128,18 @@ class SpotController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Spot $spot)
+    public function destroy(Request $request, Spot $spot)
     {   
+        // リクエストに関連付けられた認証済みユーザーが、特定の投稿 $spot を削除する権限があるかをチェック
+        if ($request->user()->cannot('delete', $spot)) {
+            abort(403);
+        }
+
+        if ($spot->image) {
+            $oldimage = 'images/' . $spot->image;
+            Storage::disk('public')->delete($oldimage);
+        }
+
         $spot->comments()->delete();
         $spot->delete();
 
