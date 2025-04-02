@@ -13,12 +13,23 @@ class SpotController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $spots = Spot::orderBy('created_at', 'desc')->get();
+        $keyword = $request->input('keyword');
+        $query = Spot::query();
+
+        if (!empty($keyword)) {
+            $query = Spot::where('title', 'LIKE', "%{$keyword}%")
+                ->orWhere('address', 'LIKE', "%{$keyword}%")
+                ->orWhere('line', 'LIKE', "%{$keyword}%")
+                ->orWhere('body', 'LIKE', "%{$keyword}%");
+        }
+
+        // $spots = Spot::orderBy('created_at', 'desc')->get();
+        $spots = $query->orderBy('created_at', 'desc')->paginate(5);
         $user = auth()->user();
 
-        return view('spot/index', compact('spots', 'user'));
+        return view('spot.index', compact('spots', 'user', 'keyword'));
     }
 
     /**
@@ -53,7 +64,7 @@ class SpotController extends Controller
         $spot->toilet = $inputs['toilet'];
         $spot->parking = $inputs['parking'];
 
-        if(request('image')) {
+        if (request('image')) {
             $original = request()->file('image')->getClientOriginalName();
             $name = date('Ymd_His') . '_' . $original;
             request()->file('image')->move('storage/images', $name);
@@ -113,7 +124,7 @@ class SpotController extends Controller
         $spot->toilet = $inputs['toilet'];
         $spot->parking = $inputs['parking'];
 
-        if(request('image')) {
+        if (request('image')) {
             $original = request()->file('image')->getClientOriginalName();
             $name = date('Ymd_His') . '_' . $original;
             request()->file('image')->move('storage/images', $name);
@@ -129,7 +140,7 @@ class SpotController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Request $request, Spot $spot)
-    {   
+    {
         // リクエストに関連付けられた認証済みユーザーが、特定の投稿 $spot を削除する権限があるかをチェック
         if ($request->user()->cannot('delete', $spot)) {
             abort(403);
@@ -147,16 +158,18 @@ class SpotController extends Controller
     }
 
     // 自分の投稿とコメント一覧表示用
-    public function myspot() {
+    public function myspot()
+    {
         $user = auth()->user()->id;
-        $spots = Spot::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        $spots = Spot::where('user_id', $user)->orderBy('created_at', 'desc')->paginate(5);
 
         return view('spot.myspot', compact('spots'));
     }
 
-    public function mycomment() {
+    public function mycomment()
+    {
         $user = auth()->user()->id;
-        $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->paginate(5);
 
         return view('spot.mycomment', compact('comments'));
     }

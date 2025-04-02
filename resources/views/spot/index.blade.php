@@ -50,5 +50,6 @@
             </div>
         </div>
         @endforeach
+        {{ $spots->links() }}
     </div>
 </x-app-layout>

@@ -60,5 +60,6 @@
         </div>
         @endforeach
         @endif
+        {{ $comments->links() }}
     </div>
 </x-app-layout>

@@ -18,3 +18,11 @@
 .btnroledetach {
     @apply  inline-flex items-center px-2 py-1  text-red-500 border border-red-500 rounded-md font-bold text-base uppercase tracking-widest hover:bg-red-200 focus:bg-red-300 active:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150;
 }
+
+.search {
+    @apply py-2 px-3 ps-9 block flex-1 border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600
+}
+
+.btnsearch {
+    @apply ml-5 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-teal-100 text-teal-800 hover:bg-teal-200 focus:outline-none focus:bg-teal-200 disabled:opacity-50 disabled:pointer-events-none dark:text-teal-500 dark:bg-teal-800/30 dark:hover:bg-teal-800/20 dark:focus:bg-teal-800/20
+}
