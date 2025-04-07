@@ -6,9 +6,10 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('top');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('top');
+Route::get('/', [SpotController::class, 'welcome'])->name('top');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

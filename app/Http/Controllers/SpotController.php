@@ -173,4 +173,10 @@ class SpotController extends Controller
 
         return view('spot.mycomment', compact('comments'));
     }
+
+    public function welcome() {
+        $spots = Spot::inRandomOrder()->limit(4)->get();
+
+        return view('welcome', compact('spots'));
+    }
 }

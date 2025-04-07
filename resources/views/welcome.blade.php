@@ -1,35 +1,34 @@
 <x-guest-layout>
-    <div class="h-screen pb-14 bg-right bg-cover">
-        <div class="container pt-10 md:pt-18 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center bg-yellow-50">
-            <!--左側-->
-            <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden ">
-                <h1 class="my-4 text-3xl md:text-4xl text-green-800 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">小鉄のためのご近所鉄道スポット</h1>
-                <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
-                    鉄道が大好きなお子さんを気軽に連れていける、鉄道が見えるスポットを共有しましょう
-                </p>
-            
-                <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">
-                    登録すると、スポットの投稿やコメントができます♪
-                </p>
-                <div class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in ">
-                    @guest
-                    <a href="{{ route('login') }}"><button class="btnsetgrey">ログイン</button></a>
-                    <a href="{{ route('register') }}"><button class="btnsetred">ご登録はこちら</button></a>
-                    @endguest
-                </div>
-            </div>
-            {{-- 右側 --}}
-            <div class="w-full xl:w-3/5 py-6 overflow-y-hidden">
-                <img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom rounded-lg shadow-xl" src="{{asset('logo/toritetsu.png')}}">
-            </div>
-        </div>
-        <div class="container pt-10 md:pt-18 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-            <div class="w-full text-sm text-center md:text-left fade-in border-2 p-4 text-red-800 leading-8 mb-8">
-                <P>index表示させる？</p>
-            </div>
-            <!--フッタ-->
-            <div class="w-full pt-10 pb-6 text-sm md:text-left fade-in">
-            </div>
-        </div>
-    </div>
+	<section class="p-6 dark:bg-gray-100 dark:text-gray-800">
+		<div class="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5">
+			<div class="w-full px-6 py-16 rounded-md sm:px-12 md:px-16 xl:col-span-2 dark:bg-gray-50">
+				<h2 class="text-4xl font-extrabold dark:text-gray-900">小鉄のための<br>ご近所鉄道スポット</h2>
+				<p class="my-8">
+					<span class="font-medium dark:text-gray-900">鉄道が大好きなお子さん</span>を気軽に連れていける、鉄道が見えるスポットを共有しましょう！
+				</p>
+				<p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">
+					登録すると、スポットの投稿やコメントができます♪
+				</p>
+				<div class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in ">
+					@guest
+					<a href="{{ route('login') }}"><button class="btnsetgrey">ログイン</button></a>
+					<a href="{{ route('register') }}"><button class="btnsetred">ご登録はこちら</button></a>
+					@endguest
+				</div>
+			</div>
+			<img src="{{asset('logo/toritetsu.png')}}" alt=""
+				class="object-cover w-full rounded-md xl:col-span-3 dark:bg-gray-500">
+		</div>
+	</section>
+
+	<section class="py-6 dark:bg-gray-100">
+		<div class="container flex flex-col justify-center p-4 mx-auto">
+			<div class="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-2">
+				@foreach($spots as $spot)
+				<img class="object-cover w-full dark:bg-gray-500 aspect-square"
+					src="{{ asset('storage/images/'.$spot->image) }}">
+				@endforeach
+			</div>
+		</div>
+	</section>
 </x-guest-layout>
