@@ -176,11 +176,12 @@ class SpotController extends Controller
 
     public function welcome()
     {
-        if (Spot::all()->isEmpty()) {
+        $query = Spot::query();
+        if (!$query) {
             $spots = [];
             return view('welcome', compact('spots'));
         }
-        $query = Spot::select('*');
+        // $query = Spot::select('*');
         $query->whereNotNull('image');
         $query->get();
         $spots = $query->inRandomOrder()->take(4)->get();

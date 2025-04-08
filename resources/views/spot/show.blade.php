@@ -61,7 +61,7 @@
                                 style="height:300px;">
                             @endif
                             <div class="text-sm font-semibold flex flex-row-reverse">
-                                <p> {{ $spot->user->nam ?? '削除されたユーザー' }} • {{ $spot->created_at->format('Y年m月d日') }}</p>
+                                <p> {{ $spot->user->name ?? '削除されたユーザー' }} • {{ $spot->created_at->format('Y年m月d日') }}</p>
                             </div>
                         </div>
                     </div>
