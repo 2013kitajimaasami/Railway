@@ -174,8 +174,16 @@ class SpotController extends Controller
         return view('spot.mycomment', compact('comments'));
     }
 
-    public function welcome() {
-        $spots = Spot::inRandomOrder()->limit(4)->get();
+    public function welcome()
+    {
+        if (Spot::all()->isEmpty()) {
+            $spots = [];
+            return view('welcome', compact('spots'));
+        }
+        $query = Spot::select('*');
+        $query->whereNotNull('image');
+        $query->get();
+        $spots = $query->inRandomOrder()->take(4)->get();
 
         return view('welcome', compact('spots'));
     }

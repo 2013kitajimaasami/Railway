@@ -21,6 +21,7 @@
 		</div>
 	</section>
 
+	@if (!empty($spots) && count($spots) > 3)
 	<section class="py-6 dark:bg-gray-100">
 		<div class="container flex flex-col justify-center p-4 mx-auto">
 			<div class="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-2">
@@ -31,4 +32,6 @@
 			</div>
 		</div>
 	</section>
+	@endif
+	
 </x-guest-layout>
