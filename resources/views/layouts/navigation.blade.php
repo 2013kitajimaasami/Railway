@@ -63,9 +63,11 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        @cannot('free')
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
+                        @endcannot
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -120,16 +122,21 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
+            @cannot('free')
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">@if (Auth::check()){{ Auth::user()->name }} @endif
                 </div>
                 <div class="font-medium text-sm text-gray-500">@if (Auth::check()){{ Auth::user()->email }} @endif</div>
             </div>
+            @endcannot
 
             <div class="mt-3 space-y-1">
+                @cannot('free')
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
+                @endcannot
+                
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

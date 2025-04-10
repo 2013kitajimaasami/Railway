@@ -37,6 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+
     // 管理者画面用
     Route::middleware(['can:admin'])->group(function () {
         Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');

@@ -12,6 +12,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\Gate;
 
 class ProfileController extends Controller
 {
@@ -20,6 +21,10 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        if(Gate::allows('free')) {
+            abort(403);
+        }
+
         return view('profile.edit', [
             'user' => $request->user(),
         ]);

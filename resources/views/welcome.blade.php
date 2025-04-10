@@ -12,6 +12,10 @@
 				<div class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in ">
 					@guest
 					<a href="{{ route('login') }}"><button class="btnsetgrey">ログイン</button></a>
+					<form method="POST" action="{{ route('guestlogin') }}">
+						@csrf
+						<button class="btnsetgrey">ゲストログイン</button>
+					</form>
 					<a href="{{ route('register') }}"><button class="btnsetred">ご登録はこちら</button></a>
 					@endguest
 				</div>

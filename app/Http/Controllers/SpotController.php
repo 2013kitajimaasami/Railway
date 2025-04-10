@@ -7,6 +7,7 @@ use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 class SpotController extends Controller
 {
@@ -37,7 +38,12 @@ class SpotController extends Controller
      */
     public function create()
     {
-        return view('spot.create');
+        if (Gate::any(['admin', 'user'])) {
+            return view('spot.create');
+        } else {
+            return redirect()->route('spot.index')->with('message', 'ゲストユーザーは新規投稿ができません。');
+        }
+        
     }
 
     /**

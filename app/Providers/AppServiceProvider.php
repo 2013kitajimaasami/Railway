@@ -29,5 +29,24 @@ class AppServiceProvider extends ServiceProvider
             }
             return false;
         });
+
+        Gate::define('user',function($user){
+            foreach($user->roles as $role){
+                if($role->name=='user'){
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        Gate::define('free',function($user){
+            foreach($user->roles as $role){
+                if($role->name=='free'){
+                    return true;
+                }
+            }
+            return false;
+        });
+
     }
 }
