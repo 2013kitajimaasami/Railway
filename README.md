@@ -1,7 +1,7 @@
 # 小鉄のための鉄道スポット共有
 
 # アプリURL
-https://railway-spot.com/
+https://laravel-pf.railway-spot.com/
 
 # 1.サービス概要
 鉄道が大好きな「小鉄」さんと一緒に、気軽にお出かけできる身近なスポットを共有するためのサイトです。
