@@ -28,7 +28,7 @@ https://laravel-pf.railway-spot.com/
 * Laravel : 12.3.0
 * Node.js : 22.14.0
 * Tailwind CSS : 3.4.17
-* VScode : 1.99.1
+* VSCode : 1.99.1
 * GitHub
 * XServer
 
