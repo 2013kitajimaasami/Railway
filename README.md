@@ -38,6 +38,8 @@ https://laravel-pf.railway-spot.com/
 
 
 # 画面遷移図
+![画像遷移図](https://github.com/user-attachments/assets/5b2ee362-b92d-4083-a474-5b5860566326)
+
 
 
 
