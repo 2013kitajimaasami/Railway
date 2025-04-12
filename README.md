@@ -1,4 +1,5 @@
 # 小鉄のための鉄道スポット共有
+![top](https://github.com/user-attachments/assets/e956dc54-360c-41c6-a5b2-8261cfc6e05c)
 
 # アプリURL
 https://laravel-pf.railway-spot.com/
@@ -23,14 +24,24 @@ https://laravel-pf.railway-spot.com/
 毎日子育てで忙しいけど、子供に喜んでもらいたい、子供の「好き」を一緒に全力で楽しみたい、そんな思いのお母さん、お父さんのお役に少しでも立てたら幸いです。
 
 # 使用技術
-* PHP
-* Laravel
+* PHP : 8.2.12
+* Laravel : 12.3.0
+* Node.js : 22.14.0
+* Tailwind CSS : 3.4.17
+* VScode : 1.99.1
+* GitHub
 * XServer
 
 # 機能一覧
-*ログイン機能
-*検索機能
-*
+* メールアドレスとパスワードを利用したアカウント登録・ログイン機能
+* ゲストログイン機能（新規投稿、アカウント編集に制限あり）
+* メール認証
+* アカウント編集機能
+* アカウント削除機能
+* 検索機能
+* 鉄道スポットの投稿
+* 投稿へのコメント
+* 画像の取得・アップロード機能
 
 # ER図
 ![railway ER図 drawio](https://github.com/user-attachments/assets/0d422c15-e4b4-4e28-a28e-be7c2ceb45f4)
