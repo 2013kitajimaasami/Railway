@@ -39,7 +39,7 @@
                         </form>
                     </div>
                     @can('free')
-                    <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                    <x-nav-link :href="route('guestregister')" :active="request()->routeIs('guestregister')">
                         新規登録へ
                     </x-nav-link>
                     @endcan

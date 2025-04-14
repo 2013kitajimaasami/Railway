@@ -46,6 +46,7 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 
+    // あらかじめ用意されたゲストユーザーにログイン
     public function guestlogin(): RedirectResponse
     {
         // $request->authenticate();
@@ -57,5 +58,17 @@ class AuthenticatedSessionController extends Controller
         Auth::login($user);
 
         return redirect()->route('spot.index');
+    }
+
+    // ゲストユーザーから新規登録のため、いったんログアウト手続きをして登録画面へ
+    public function guestregister(Request $request): RedirectResponse
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('register');
     }
 }
