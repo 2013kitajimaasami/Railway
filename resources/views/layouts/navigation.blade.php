@@ -38,6 +38,11 @@
                             <button class="btnsearch" type="submit">検索</button>
                         </form>
                     </div>
+                    @can('free')
+                    <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                        新規登録へ
+                    </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
