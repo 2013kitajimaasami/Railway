@@ -37,6 +37,12 @@
 
                         {{-- コメントバッジ --}}
                         <hr class="w-full mb-2">
+                        @if ($spot->likeds->count())
+                        <span class="likebadge">
+                            いいね{{ $spot->likeds->count() }}件
+                        </span>
+                        @endif
+                        
                         @if ($spot->comments->count())
                         <span class="badge">
                             コメント{{ $spot->comments->count() }}件
@@ -46,6 +52,7 @@
                             コメントはまだありません。
                         </span>
                         @endif
+                        
                         <a href="{{ route('spot.show', $spot) }}" style="color: white;">
                             <x-primary-button class="float-right">コメントする</x-primary-button>
                         </a>

@@ -59,10 +59,23 @@ class User extends Authenticatable implements MustVerifyEmail
     public function roles() {
         return $this->belongsToMany(Role::class);
     }
-
+    
     // 登録確認メールのオーバーライド
     public function sendEmailVerificationNotification()
     {
         $this->notify(new NewVerifyEmail());
+    }
+
+    // いいね用
+    // public function likes() {
+    //     return $this->belongsToMany(Spot::class);
+    // }
+
+    // public function likes() {
+    //     return $this->hasMany(Like::class);
+    // }
+
+    public function likes() {
+        return $this->belongsToMany(Spot::class, 'likes');
     }
 }

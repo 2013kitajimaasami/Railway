@@ -15,3 +15,49 @@
     margin-left: auto;
 } */
 
+.likebadge {
+    display: inline-block;
+    color: #fff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.6rem;
+    text-align: center;
+    white-space: nowrap;
+    background-color: palevioletred;
+}
+
+.like {
+    color: black;
+}
+
+.like-toggle {
+    cursor: pointer;
+}
+
+i.liked {
+    color: red !important;
+}
+
+.back-btn {
+    margin-left: auto;
+    position: relative;
+    text-align: center;
+    width: 80px;
+
+}
+
+.back-btn img {
+    opacity: 0.4;
+    display: block;
+    width: 100%;
+}
+
+.back-btn p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: black;
+    margin: 0;
+}

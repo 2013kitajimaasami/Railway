@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Spot;
 use App\Models\Comment;
+use App\Models\Like;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
@@ -43,7 +45,6 @@ class SpotController extends Controller
         } else {
             return redirect()->route('spot.index')->with('message', 'ゲストユーザーは新規投稿ができません。');
         }
-        
     }
 
     /**
@@ -157,6 +158,7 @@ class SpotController extends Controller
             Storage::disk('public')->delete($oldimage);
         }
 
+        $spot->likeds()->detach(); // いいねの中間テーブルを削除
         $spot->comments()->delete();
         $spot->delete();
 
@@ -180,6 +182,7 @@ class SpotController extends Controller
         return view('spot.mycomment', compact('comments'));
     }
 
+    // topページに４枚ランダムに画像表示
     public function welcome()
     {
         $query = Spot::query();
@@ -193,5 +196,25 @@ class SpotController extends Controller
         $spots = $query->inRandomOrder()->take(4)->get();
 
         return view('welcome', compact('spots'));
+    }
+
+    // いいねの処理
+    public function like(Spot $spot) {
+        $user = auth()->user();
+        // いいねの状態を取り出す
+        $isLiked = $user->likes()->where('spot_id', $spot->id)->exists();
+
+        if ($isLiked) {
+            $user->likes()->detach($spot); // すでにいいねがあればはずす
+        } else {
+            $user->likes()->attach($spot);  // いいねがなければつける
+        }
+
+        $likesCount = $spot->likeds->count();
+
+        return response()->json([
+            'liked' => !$isLiked,
+            'likes_count' => $likesCount,
+        ]);
     }
 }

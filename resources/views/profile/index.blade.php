@@ -3,6 +3,12 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             ユーザー一覧
         </h2>
+        <div class="back-btn">
+            <a href="#" onclick="history.back()">
+                <img src="{{asset('logo/6000.png')}}" style="max-height:40px;">
+                <p>戻る</p>
+            </a>
+        </div>
         <x-message :message="session('message')" />
     </x-slot>
 

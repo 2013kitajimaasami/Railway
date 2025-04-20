@@ -12,9 +12,13 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- Scripts -->     
+        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/like.js'])
         <link rel="stylesheet" href="{{ asset('css/forum.css') }}">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://kit.fontawesome.com/9b4d478d06.js" crossorigin="anonymous"></script>
+        
+        
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

@@ -13,20 +13,25 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/like.js'])
+    <link rel="stylesheet" href="{{ asset('css/forum.css') }}">
+    <script src="https://kit.fontawesome.com/9b4d478d06.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
     <div class="font-sans text-gray-900 antialiased">
         <div class="w-full container mx-auto p-6">
             <div class="w-full flex items-center justify-between">
-                <a href="{{ route('top') }}"><img src="{{asset('logo/3000.png')}}"  style="max-height:40px;"></a>
+                <a href="{{ route('top') }}"><img src="{{asset('logo/3000.png')}}" style="max-height:40px;"></a>
                 <div class="flex w-1/2 justify-end content-center">
                     {{-- ログイン・登録部分 --}}
                     @if (Route::has('login'))
                     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                         @auth
-                        <a href="{{ url('/spot/index') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">HOME</a>
+                        <a href="{{ url('/spot/index') }}"
+                            class="text-sm text-gray-700 dark:text-gray-500 underline">HOME</a>
                         @else
                         <a href="{{ route('login') }}"
                             class="text-sm text-gray-700 dark:text-gray-500 underline font-bold text-base">ログイン</a>

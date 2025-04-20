@@ -3,6 +3,12 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             コメントした鉄道スポット一覧
         </h2>
+        <div class="back-btn">
+            <a href="#" onclick="history.back()">
+                <img src="{{asset('logo/6000.png')}}" style="max-height:40px;">
+                <p>戻る</p>
+            </a>
+        </div>
         <x-validation-errors class="mb-4" :errors="$errors" />
         <x-message :message="session('message')" />
     </x-slot>
@@ -42,6 +48,12 @@
 
                         {{-- コメントバッジ --}}
                         <hr class="w-full mb-2">
+                        @if ($spot->likeds->count())
+                        <span class="likebadge">
+                            いいね{{ $spot->likeds->count() }}件
+                        </span>
+                        @endif
+                        
                         @if ($spot->comments->count())
                         <span class="badge">
                             コメント{{ $spot->comments->count() }}件

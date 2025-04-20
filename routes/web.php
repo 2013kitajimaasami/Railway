@@ -23,6 +23,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/spot/myspot', [SpotController::class, 'myspot'])->name('spot.myspot');
     Route::get('/spot/mycomment', [SpotController::class, 'mycomment'])->name('spot.mycomment');
 
+    Route::post('/spot/{spot}/like', [SpotController::class, 'like'])->name('spot.like');
+
     Route::get('/spot/create', [SpotController::class, 'create'])->name('spot.create');
     Route::post('/spot/store', [SpotController::class, 'store'])->name('spot.store');
     Route::get('/spot/index', [SpotController::class, 'index'])->name('spot.index');

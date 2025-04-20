@@ -3,6 +3,12 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             スポットの詳細
         </h2>
+        <div class="back-btn">
+            <a href="#" onclick="history.back()">
+                <img src="{{asset('logo/6000.png')}}" style="max-height:40px;">
+                <p>戻る</p>
+            </a>
+        </div>
         <x-validation-errors class="mb-4" :errors="$errors" />
         <x-message :message="session('message')" />
     </x-slot>
@@ -61,36 +67,51 @@
                                 style="height:300px;">
                             @endif
                             <div class="text-sm font-semibold flex flex-row-reverse">
-                                <p> {{ $spot->user->name ?? '削除されたユーザー' }} • {{ $spot->created_at->format('Y年m月d日') }}</p>
+                                <p> {{ $spot->user->name ?? '削除されたユーザー' }} • {{ $spot->created_at->format('Y年m月d日') }}
+                                </p>
+                            </div>
+                        </div>
+                        <hr class="w-full">
+                        <div class="flex justify-end mt-4">
+                            <div class="like">
+                            @if ($spot->likeds->contains(auth()->user()))
+                            {{-- <i class="like-toggle fa-regular fa-heart" data-spot-id="{{ $spot->id }}"> --}}
+                            <i class="like-toggle liked fas fa-heart" data-spot-id="{{ $spot->id }}">
+                            </i>
+                            <span class="like-counter">{{ $spot->likeds->count() }}</span>
+                            @else
+                            {{-- <i class="like-toggle fa-regular fa-heart" data-spot-id="{{ $spot->id }}"></i> --}}
+                            <i class="like-toggle far fa-heart" data-spot-id="{{ $spot->id }}"></i>
+                            <span class="like-counter">{{ $spot->likeds->count() }}</span>
+                            @endif
                             </div>
                         </div>
                     </div>
-
-                    {{-- コメントの作成と表示 --}}
-                    <div class="mt-4 mb-12">
-                        <form method="post" action="{{route('comment.store')}}">
-                            @csrf
-                            <input type="hidden" name='spot_id' value="{{ $spot->id }}">
-                            <textarea name="body"
-                                class="bg-white w-full  rounded-2xl px-4 mt-4 py-4 shadow-lg hover:shadow-2xl transition duration-500"
-                                id="body" cols="30" rows="3" placeholder="コメントを入力してください">{{ old('body') }}</textarea>
-                            <x-primary-button class="float-right mr-4 mb-12">コメントする</x-primary-button>
-                        </form>
-                    </div>
-                    @foreach ($spot->comments as $comment)
-                    <div class="bg-white w-full  rounded-2xl px-10 py-8 shadow-lg mt-8 whitespace-pre-line">
-                        {{$comment->body}}
-                        <div class="text-sm font-semibold flex flex-row-reverse">
-                            <p class="float-left pt-4"> {{ $comment->user->name ?? '削除されたユーザー' }} •
-                                {{$comment->created_at->diffForHumans()}}</p>
-                            {{-- アバター追加 --}}
-                            <span class="rounded-full w-12 h-12">
-                                <img src="{{ asset('storage/avatar/'.($comment->user->avatar ?? 'user_default.jpg')) }}">
-                            </span>
-                        </div>
-                    </div>
-                    @endforeach
                 </div>
+                {{-- コメントの作成と表示 --}}
+                <div class="mt-4 mb-12">
+                    <form method="post" action="{{route('comment.store')}}">
+                        @csrf
+                        <input type="hidden" name='spot_id' value="{{ $spot->id }}">
+                        <textarea name="body"
+                            class="bg-white w-full  rounded-2xl px-4 mt-4 py-4 shadow-lg hover:shadow-2xl transition duration-500"
+                            id="body" cols="30" rows="3" placeholder="コメントを入力してください">{{ old('body') }}</textarea>
+                        <x-primary-button class="float-right mr-4 mb-12">コメントする</x-primary-button>
+                    </form>
+                </div>
+                @foreach ($spot->comments as $comment)
+                <div class="bg-white w-full  rounded-2xl px-10 py-8 shadow-lg mt-8 whitespace-pre-line">
+                    {{$comment->body}}
+                    <div class="text-sm font-semibold flex flex-row-reverse">
+                        <p class="float-left pt-4"> {{ $comment->user->name ?? '削除されたユーザー' }} •
+                            {{$comment->created_at->diffForHumans()}}</p>
+                        {{-- アバター追加 --}}
+                        <span class="rounded-full w-12 h-12">
+                            <img src="{{ asset('storage/avatar/'.($comment->user->avatar ?? 'user_default.jpg')) }}">
+                        </span>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
 </x-app-layout>

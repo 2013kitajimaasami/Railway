@@ -24,4 +24,28 @@ class Spot extends Model
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+
+    // いいね用
+    // public function followers() {
+    //     return $this->belongsToMany(User::class);
+    // }
+
+    // public function likes() {
+    //     return $this->hasMany(Like::class);
+    // }
+
+    public function likeds() {
+        return $this->belongsToMany(User::class, 'likes');
+    }
+
+    // いいねされているかの判定
+    // public function isLikedBy($user) {
+    //     return Like::where('user_id', $user->id)->where('spot_id', $this->id)->first() !== null;
+    // }
+
+    
+
+    
+
+
 }
