@@ -20,7 +20,7 @@
 					@endguest
 				</div>
 			</div>
-			<img src="{{asset('logo/toritetsu.png')}}" alt=""
+			<img src="{{asset('logo/4047.jpg')}}" alt=""
 				class="object-cover w-full rounded-md xl:col-span-3 dark:bg-gray-500">
 		</div>
 	</section>
