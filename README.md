@@ -1,5 +1,5 @@
 # 小鉄のための鉄道スポット共有サービス
-![top](https://github.com/user-attachments/assets/e956dc54-360c-41c6-a5b2-8261cfc6e05c)
+![top](https://github.com/user-attachments/assets/8bd9e85f-2831-4691-b7ce-9f19104f1f5a)
 
 # ▼アプリURL
 https://laravel-pf.railway-spot.com/
@@ -25,8 +25,8 @@ https://laravel-pf.railway-spot.com/
 ・鉄道スポットの共有のみに特化し、できるだけシンプルな機能を目指しました。気軽に鉄道スポットをリサーチしてください。
 
 # 3.工夫した点
-・いいね機能にAjaxを取り入れ、非同期通信させることでページ再読み込みのストレスを軽減
-・リレーションの活用で、モデルクラスを作成せずにシンプルないいね機能を構成
+・いいね機能にAjaxを取り入れ、非同期通信させることでページ再読み込みのストレスを軽減<br>
+・リレーションの活用で、モデルクラスを作成せずにシンプルないいね機能を構成<br>
 ・ゲストログイン機能で、本登録前に気軽に雰囲気を楽しめる
 
 # 4.使用技術
@@ -51,7 +51,7 @@ https://laravel-pf.railway-spot.com/
 * 画像の取得・アップロード機能
 
 # 5.ER図
-![railway ER図 drawio](https://github.com/user-attachments/assets/0d422c15-e4b4-4e28-a28e-be7c2ceb45f4)
+![ER図(sitemap)](https://github.com/user-attachments/assets/00145058-6e62-4232-a89f-e8ba4221c2b3)
 
 # 6.画面遷移図
-![画像遷移図](https://github.com/user-attachments/assets/5b2ee362-b92d-4083-a474-5b5860566326)
+![画面遷移図](https://github.com/user-attachments/assets/5afcbea5-6d17-467a-8f76-2ad5faad1245)
