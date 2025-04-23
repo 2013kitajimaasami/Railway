@@ -13,7 +13,7 @@ class NewVerifyEmail extends VerifyEmail
     protected function buildMailMessage($url)
     {
         return (new MailMessage)
-            ->subject('小鉄のためのご近所鉄道スポットより、ご登録メールアドレスの確認です')
+            ->subject('子鉄のためのご近所鉄道スポットより、ご登録メールアドレスの確認です')
             ->line('ご登録ありがとうございます。')
             ->line('たくさんの鉄道スポットを共有していきましょう！')
             ->action('このボタンをクリック', $url)

@@ -2,7 +2,7 @@
 	<section class="p-6 dark:bg-gray-100 dark:text-gray-800">
 		<div class="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5">
 			<div class="w-full px-6 py-16 rounded-md sm:px-12 md:px-16 xl:col-span-2 dark:bg-gray-50">
-				<h2 class="text-4xl font-extrabold dark:text-gray-900">小鉄のための<br>ご近所鉄道スポット</h2>
+				<h2 class="text-4xl font-extrabold dark:text-gray-900">子鉄のための<br>ご近所鉄道スポット</h2>
 				<p class="my-8">
 					<span class="font-medium dark:text-gray-900">鉄道が大好きなお子さん</span>を気軽に連れていける、鉄道が見えるスポットを共有しましょう！
 				</p>
