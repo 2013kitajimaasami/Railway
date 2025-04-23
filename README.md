@@ -1,5 +1,5 @@
 # 子鉄のための鉄道スポット共有サービス
-![top](https://github.com/user-attachments/assets/8bd9e85f-2831-4691-b7ce-9f19104f1f5a)
+![top](https://github.com/user-attachments/assets/44fb3333-a06d-4ebd-bafb-34418908d048)
 
 # ▼アプリURL
 https://laravel-pf.railway-spot.com/
@@ -54,4 +54,4 @@ https://laravel-pf.railway-spot.com/
 ![ER図(sitemap)](https://github.com/user-attachments/assets/00145058-6e62-4232-a89f-e8ba4221c2b3)
 
 # 6.画面遷移図
-![画面遷移図](https://github.com/user-attachments/assets/5afcbea5-6d17-467a-8f76-2ad5faad1245)
+![画面遷移図](https://github.com/user-attachments/assets/d98fb4c4-0c2f-4872-902d-4d2b68afc274)
