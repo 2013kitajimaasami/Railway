@@ -2,7 +2,7 @@
 ![top](https://github.com/user-attachments/assets/44fb3333-a06d-4ebd-bafb-34418908d048)
 
 # ▼アプリURL
-https://laravel-pf.railway-spot.com/
+<a href="https://laravel-pf.railway-spot.com/">
 
 # 1.サービス概要
 鉄道が大好きな「子鉄」さんと一緒に、気軽にお出かけできる身近なスポットを共有するためのサイトです。
